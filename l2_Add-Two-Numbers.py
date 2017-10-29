@@ -1,36 +1,21 @@
 #!/usr/bin/python
 # coding: utf-8
-
 ##################################################################
-# 题目
-##################################################################
-# You are given two linked lists representing two non-negative
-# numbers. The digits are stored in reverse order and
-# each of their nodes contain a single digit.
-# Add the two numbers and return it as a linked list.
+## Description
+# You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and
+# each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
 #
 # Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 # Output: 7 -> 0 -> 8
-
 ##################################################################
-# 解题
-##################################################################
+## Solution
 # Definition for singly-linked list.
-
-
 class ListNode(object):
-
     def __init__(self, x):
         self.val = x
         self.next = None
-
-
-##################################################################
 # copy here
-##################################################################
-class Solution:
-    # @return a ListNode
-
+class Solution:  # @return a ListNode
     def addTwoNumbers(self, l1, l2):
         carry = 0
         res = n = ListNode(0)
@@ -44,7 +29,6 @@ class Solution:
             carry, val = divmod(carry, 10)
             n.next = n = ListNode(val)
         return res.next
-
 if __name__ == '__main__':
     l1 = tmp = ListNode(2)
     tmp.next = tmp = ListNode(4)
@@ -56,5 +40,5 @@ if __name__ == '__main__':
     res = Solution()
     tmp = res.addTwoNumbers(l1, l2)
     while tmp:
-        print tmp.val
+        print(tmp.val)
         tmp = tmp.next
