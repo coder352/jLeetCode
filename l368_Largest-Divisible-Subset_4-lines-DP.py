@@ -13,7 +13,7 @@
 # nums: [1, 2, 4, 8]
 # Result: [1, 2, 4, 8]
 ##################################################################
-## Solution; 参考题目后面大神的代码
+## Solution: Time: O(n^2); Space: O(n^2) 参考题目后面大神的代码
 # 思路: 其实和求最大上升子序列 LIS 差不多, 只不过这题要求输出序列而已.
 # 先把数组排好序. 首先要明确, 若 a<b 且 b%a==0 ,  b <c 且 c%b==0 那么必然有 c%a==0
 # 我们设 dp[i] 为最大的子集长度, 更新的时候保存上一个的下标即可.
@@ -28,7 +28,8 @@ class Solution:
         for x in sorted(nums):
             S[x] = max((S[d] for d in S if x % d == 0), key=len) | {x}  # 这动态规划写的..., 满分; | {x} 是 set() 添加元素的另一种方式
         return sorted(list(max(S.values(), key=len)))
-print(Solution().largestDivisibleSubset([1, 2, 4, 8]))
+print(Solution().largestDivisibleSubset([1, 2, 4, 8]))  # [1, 2, 4, 8]
+print(Solution().largestDivisibleSubset([1, 2, 3, 9]))  # [1, 3, 9]
 # My S[x] is the largest subset with x as the largest element, i.e., the subset of all divisors of x in the input.
 # With S[-1] = emptyset as useful base case.
 # Since divisibility is transitive, a multiple x of some divisor d is also a multiple of all elements in S[d],
